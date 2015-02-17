@@ -9,6 +9,6 @@
   - nagios-nrpe-server
   - nagios-plugins-basic
 
-- template: src=roles/templates/nrpe.cfg.j2 dest=/etc/nagios/nrpe.cfg owner=root group=root mode=0644
+- template: src=nrpe.cfg.j2 dest=/etc/nagios/nrpe.cfg owner=root group=root mode=0644
   notify:
     - restart nagios nrpe daemon
