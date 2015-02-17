@@ -1,18 +1,17 @@
 Nagios nrpe installation
 ========
-
 Install the Nagios nrpe agent on multi OS
 
 Requirements
 ------------
+Currently has been tested on Ubuntu 14.04, Debian Wheezy
 
-Currently has been tested on Ubuntu 12.04, Debian Wheezy, CentOS 6.4, Fedora 18/19/20, openSUSE 12.2/12.3  
 Role Variables
 --------------
-No special vars now.
+* allowed_hosts
+* server_port(5666 by default)
+* dont_blame_nrpe (0 | 1)
 
 License
 -------
-
 BSD
-
