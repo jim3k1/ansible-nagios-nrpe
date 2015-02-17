@@ -1,2 +1,5 @@
 ---
-# handlers file for ansible-nagios-client
+# handler for nagios nrpe daemon
+- name: restart nagios nrpe daemon
+  sudo: true
+  service: name=nagios-nrpe-server state=restarted
