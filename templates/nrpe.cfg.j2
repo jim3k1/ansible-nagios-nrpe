@@ -93,8 +93,7 @@ allowed_hosts={{ allowed_hosts }}
 #
 # Values: 0=do not allow arguments, 1=allow command arguments
 
-dont_blame_nrpe=1
-
+dont_blame_nrpe={{ dont_blame_nrpe | default(0) }}
 
 
 # BASH COMMAND SUBTITUTION
