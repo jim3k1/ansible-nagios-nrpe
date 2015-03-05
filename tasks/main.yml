@@ -1,3 +1,5 @@
-
-- include: Debian.based.yml
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+---
+- include: precise.yml
+  when: ansible_distribution_release == 'precise'
+- include: trusty.yml
+  when: ansible_distribution_release == 'trusty'
