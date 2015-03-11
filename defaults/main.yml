@@ -1,5 +1,5 @@
 ---
-allowed_hosts: "{{ allowed_hosts }}"
+allowed_hosts: "{{ hostvars[groups['monitoring'][0]].ansible_eth1.ipv4.address }}"
 dont_blame_nrpe: 1
 
 nagios_plugins_version: 2.0.3
