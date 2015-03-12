@@ -1,6 +1,6 @@
 
 - name: Install nagios nrpe server
-  apt: pkg={{ item }} update_cache=yes install_recommends=no
+  apt: pkg={{ item }} update_cache=yes install_recommends=no cache_valid_time=600
   with_items:
   - nagios-nrpe-server
 
