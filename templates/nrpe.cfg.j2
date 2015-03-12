@@ -77,9 +77,21 @@ nrpe_group=nagios
 #
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
 
-allowed_hosts={{ allowed_hosts | default("127.0.0.1") }}
- 
+{% set ips = [] %}
 
+{%- macro get_ip_address_from_hosts(group) %}
+    {% for host in groups[group] %}
+        {% if ips.append(hostvars[host]['ansible_eth1']['ipv4']['address']) %}{% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{{- get_ip_address_from_hosts('monitoring') -}}
+
+{% if groups['extra_mon_servers'] is defined and groups['extra_mon_servers'] | length >= 1 %}
+    {{ get_ip_address_from_hosts('extra_mon_servers') -}}
+{% endif %}
+
+allowed_variables = {{ ips | join(",") }}
 
 # COMMAND ARGUMENT PROCESSING
 # This option determines whether or not the NRPE daemon will allow clients
