@@ -81,7 +81,7 @@ nrpe_group=nagios
 
 {%- macro get_ip_address_from_hosts(group) %}
     {% for host in groups[group] %}
-        {% if ips.append(hostvars[host]['ansible_eth1']['ipv4']['address']) %}{% endif %}
+        {% if ips.append(hostvars[host].ansible_default_ipv4.address) %}{% endif %}
     {% endfor %}
 {% endmacro %}
 
