@@ -91,7 +91,7 @@ nrpe_group=nagios
     {{ get_ip_address_from_hosts('extra_mon_servers') -}}
 {% endif %}
 
-allowed_variables = {{ ips | join(",") }}
+allowed_hosts={{ ips | join(",") }}
 
 # COMMAND ARGUMENT PROCESSING
 # This option determines whether or not the NRPE daemon will allow clients
@@ -226,11 +226,11 @@ connection_timeout=300
 
 # The following examples use hardcoded command arguments...
 
-command[check_users]=/usr/lib/nagios/plugins/check_users -w 5 -c 10
-command[check_load]=/usr/lib/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
-command[check_hda1]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/hda1
-command[check_zombie_procs]=/usr/lib/nagios/plugins/check_procs -w 5 -c 10 -s Z
-command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w 150 -c 200 
+command[check_users]=/usr/local/nagios/libexec/check_users -w 5 -c 10
+command[check_load]=/usr/local/nagios/libexec/check_load -w 15,10,5 -c 30,25,20
+command[check_disk]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /
+command[check_zombie_procs]=/usr/local/nagios/libexec/check_procs -w 5 -c 10 -s Z
+command[check_total_procs]=/usr/local/nagios/libexec/check_procs -w 150 -c 200
 
 
 # The following examples allow user-supplied arguments and can
@@ -239,10 +239,10 @@ command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w 150 -c 200
 # config file is set to '1'.  This poses a potential security risk, so
 # make sure you read the SECURITY file before doing this.
 
-#command[check_users]=/usr/lib/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
-#command[check_load]=/usr/lib/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
-#command[check_disk]=/usr/lib/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
-#command[check_procs]=/usr/lib/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+#command[check_users]=/usr/local/nagios/libexec/check_users -w $ARG1$ -c $ARG2$
+#command[check_load]=/usr/local/nagios/libexec/check_load -w $ARG1$ -c $ARG2$
+#command[check_disk]=/usr/local/nagios/libexec/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
+#command[check_procs]=/usr/local/nagios/libexec/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
 
 #
 # local configuration:
